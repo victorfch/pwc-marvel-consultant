@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
-import MarvelContext from "../context/MarvelContext"
-import { getSerie } from "../services/getSerie"
+import MarvelContext from "../../context/MarvelContext"
+import { getSingleItem } from "../../services/api"
 
 export const useSerie = id => {
   const { marvel } = useContext(MarvelContext)
@@ -10,7 +10,7 @@ export const useSerie = id => {
 
   useEffect(() => {
     if (!serie) {
-      getSerie(id).then(data => {
+      getSingleItem("series", id).then(data => {
         setSerie(data)
         setLoading(false)
       })

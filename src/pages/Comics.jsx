@@ -1,9 +1,11 @@
 import { Card } from "../components/Card"
-import { useComics } from "../hooks/useComics"
+import { useComics } from "../hooks/comic/useComics"
 import { Pagination } from "../components/Pagination"
 
 export const Comics = () => {
-  const { marvel, setPage } = useComics()
+  const { marvel, setPage, loading } = useComics()
+
+  if (loading) return <p>Loading...</p>
 
   return (
     <div className="px-4 pb-2">

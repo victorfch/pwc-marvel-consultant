@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
-import { useComic } from "../hooks/useComic"
+import { ViewFieldArray } from "../components/ViewFieldArray"
+import { useComic } from "../hooks/comic/useComic"
 
 export const ComicDetails = () => {
   const { id } = useParams()
@@ -27,36 +28,14 @@ export const ComicDetails = () => {
           )}
 
           {comic.series.available && (
-            <div>
-              <div className="font-bold">Series:</div>
-              <ul>
-                {character.series.items.map((serie, id) => (
-                  <li key={id}>{serie.name}</li>
-                ))}
-              </ul>
-            </div>
+            <ViewFieldArray title="Series" items={comic.series.items} />
           )}
-
           {comic.stories.available && (
-            <div>
-              <div className="font-bold">Stories:</div>
-              <ul>
-                {comic.stories.items.map((story, id) => (
-                  <li key={id}>{story.name}</li>
-                ))}
-              </ul>
-            </div>
+            <ViewFieldArray title="Stories" items={comic.stories.items} />
           )}
 
           {comic.creators.available && (
-            <div>
-              <div className="font-bold">Creators:</div>
-              <ul>
-                {comic.creators.items.map((creator, id) => (
-                  <li key={id}>{creator.name}</li>
-                ))}
-              </ul>
-            </div>
+            <ViewFieldArray title="Creators" items={comic.creators.items} />
           )}
         </div>
       </div>

@@ -1,10 +1,11 @@
-import { Link, useSearchParams } from "react-router-dom"
 import { Card } from "../components/Card"
 import { Pagination } from "../components/Pagination"
-import { useCharacters } from "../hooks/useCharacters"
+import { useCharacters } from "../hooks/character/useCharacters"
 
 export const Characters = () => {
-  const { marvel, setPage } = useCharacters()
+  const { marvel, setPage, loading } = useCharacters()
+
+  if (loading) return <p>Loading...</p>
 
   return (
     <div className="px-4 pb-2">

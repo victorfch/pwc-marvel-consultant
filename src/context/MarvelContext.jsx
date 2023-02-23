@@ -1,20 +1,15 @@
-import { createContext, Dispatch, SetStateAction, useState } from "react"
+import { createContext, useState } from "react"
 
-const MarvelContext = createContext({
-  marvel: {
-    characters: [],
-    series: [],
-    comics: [],
-  },
-  setMarvel: item => {},
-})
+const initialState = {
+  characters: [],
+  comics: [],
+  series: [],
+}
+
+const MarvelContext = createContext()
 
 export const MarvelContextProvider = ({ children }) => {
-  const [marvel, setMarvel] = useState({
-    characters: [],
-    comics: [],
-    series: [],
-  })
+  const [marvel, setMarvel] = useState(initialState)
 
   return (
     <MarvelContext.Provider value={{ marvel, setMarvel }}>

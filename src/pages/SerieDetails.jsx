@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
-import { useSerie } from "../hooks/useSerie"
+import { ViewFieldArray } from "../components/ViewFieldArray"
+import { useSerie } from "../hooks/serie/useSerie"
 
 export const SerieDetails = () => {
   const { id } = useParams()
@@ -27,36 +28,15 @@ export const SerieDetails = () => {
           )}
 
           {serie.stories.available && (
-            <div>
-              <div className="font-bold">Stories:</div>
-              <ul>
-                {serie.stories.items.map((story, id) => (
-                  <li key={id}>{story.name}</li>
-                ))}
-              </ul>
-            </div>
+            <ViewFieldArray title="Stories" items={serie.stories.items} />
           )}
 
           {serie.creators.available && (
-            <div>
-              <div className="font-bold">Creators:</div>
-              <ul>
-                {serie.creators.items.map((creator, id) => (
-                  <li key={id}>{creator.name}</li>
-                ))}
-              </ul>
-            </div>
+            <ViewFieldArray title="Creators" items={serie.creators.items} />
           )}
 
           {serie.comics.available && (
-            <div>
-              <div className="font-bold">Comics:</div>
-              <ul>
-                {serie.comics.items.map((comic, id) => (
-                  <li key={id}>{comic.name}</li>
-                ))}
-              </ul>
-            </div>
+            <ViewFieldArray title="Comics" items={serie.comics.items} />
           )}
         </div>
       </div>

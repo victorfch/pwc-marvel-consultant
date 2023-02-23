@@ -1,8 +1,11 @@
 import { Card } from "../components/Card"
-import { useSeries } from "../hooks/useSeries"
+import { Pagination } from "../components/Pagination"
+import { useSeries } from "../hooks/serie/useSeries"
 
 export const Series = () => {
-  const { marvel } = useSeries()
+  const { marvel, setPage, loading } = useSeries()
+
+  if (loading) return <p>Loading...</p>
 
   return (
     <div className="px-4 pb-2">
@@ -17,6 +20,7 @@ export const Series = () => {
           />
         ))}
       </div>
+      <Pagination setPage={setPage} />
     </div>
   )
 }

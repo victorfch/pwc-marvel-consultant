@@ -29,7 +29,7 @@ export const Navbar = () => {
         <ul
           className={`${
             openNavbar ? "flex flex-col" : "hidden"
-          } md:flex md:flex-row`}
+          } md:flex md:flex-row ite`}
         >
           <li className="p-3">
             <NavLink

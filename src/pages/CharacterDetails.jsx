@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom"
-import { useCharacter } from "../hooks/useCharacter"
+import { ViewFieldArray } from "../components/ViewFieldArray"
+import { useCharacter } from "../hooks/character/useCharacter"
 
 export const CharacterDetails = () => {
   const { id } = useParams()
@@ -27,25 +28,11 @@ export const CharacterDetails = () => {
           )}
 
           {character.series.available && (
-            <div>
-              <div className="font-bold">Series:</div>
-              <ul>
-                {character.series.items.map((serie, id) => (
-                  <li key={id}>{serie.name}</li>
-                ))}
-              </ul>
-            </div>
+            <ViewFieldArray title="Series" items={character.series.items} />
           )}
 
           {character.stories.available && (
-            <div>
-              <div className="font-bold">Stories:</div>
-              <ul>
-                {character.stories.items.map((story, id) => (
-                  <li key={id}>{story.name}</li>
-                ))}
-              </ul>
-            </div>
+            <ViewFieldArray title="Stories" items={character.stories.items} />
           )}
         </div>
       </div>

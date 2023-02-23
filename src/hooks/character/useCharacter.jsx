@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
-import MarvelContext from "../context/MarvelContext"
-import { getCharacter } from "../services/getCharacter"
+import MarvelContext from "../../context/MarvelContext"
+import { getSingleItem } from "../../services/api"
 
 export const useCharacter = id => {
   const { marvel } = useContext(MarvelContext)
@@ -10,7 +10,7 @@ export const useCharacter = id => {
 
   useEffect(() => {
     if (!character) {
-      getCharacter(id).then(data => {
+      getSingleItem("characters", id).then(data => {
         setCharacter(data)
         setLoading(false)
       })
