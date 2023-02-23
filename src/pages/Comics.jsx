@@ -1,8 +1,9 @@
 import { Card } from "../components/Card"
 import { useComics } from "../hooks/useComics"
+import { Pagination } from "../components/Pagination"
 
 export const Comics = () => {
-  const { marvel } = useComics()
+  const { marvel, setPage } = useComics()
 
   return (
     <div className="px-4 pb-2">
@@ -17,6 +18,7 @@ export const Comics = () => {
           />
         ))}
       </div>
+      <Pagination setPage={setPage} />
     </div>
   )
 }
