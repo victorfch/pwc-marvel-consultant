@@ -4,7 +4,6 @@ import { useSerie } from "../hooks/useSerie"
 export const SerieDetails = () => {
   const { id } = useParams()
   const { serie, loading } = useSerie(id)
-  console.log(serie)
 
   if (loading) return <p>Loading...</p>
 

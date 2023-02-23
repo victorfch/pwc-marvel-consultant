@@ -5,7 +5,5 @@ export const getSeries = async () => {
   const res = await fetch(url)
   const { data } = await res.json()
 
-  console.log("callin api series")
-
   return data.results
 }

@@ -4,8 +4,6 @@ import { useComic } from "../hooks/useComic"
 export const ComicDetails = () => {
   const { id } = useParams()
   const { comic, loading } = useComic(id)
-  console.log(loading)
-  console.log(comic)
 
   if (loading) return <p>Loading...</p>
 
