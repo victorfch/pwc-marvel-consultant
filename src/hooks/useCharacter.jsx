@@ -1,14 +1,23 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import MarvelContext from "../context/MarvelContext"
 import { getCharacter } from "../services/getCharacter"
 
 export const useCharacter = id => {
-  const [character, setCharacter] = useState({})
+  const { marvel } = useContext(MarvelContext)
+  const characterSaved = marvel.characters.find(character => character.id == id)
+  const [character, setCharacter] = useState(characterSaved)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    getCharacter(id).then(data => {
-      setCharacter(data)
-    })
+    if (!character) {
+      getCharacter(id).then(data => {
+        setCharacter(data)
+        setLoading(false)
+      })
+      return
+    }
+    setLoading(false)
   }, [id])
 
-  return character
+  return { character, loading }
 }

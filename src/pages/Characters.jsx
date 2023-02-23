@@ -1,4 +1,4 @@
-import { CharacterCard } from "../components/CharacterCard"
+import { Card } from "../components/Card"
 import { useCharacters } from "../hooks/useCharacters"
 
 export const Characters = () => {
@@ -8,7 +8,13 @@ export const Characters = () => {
     <div className="px-4 pb-2">
       <div className="flex flex-col md:flex-row flex-wrap gap-2 justify-between items-stretch">
         {marvel.characters.map((character, id) => (
-          <CharacterCard key={id} character={character} />
+          <Card
+            key={id}
+            url={`/characters/${character.id}`}
+            imageSrc={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+            title={character.name}
+            description={character.description}
+          />
         ))}
       </div>
     </div>

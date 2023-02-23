@@ -1,4 +1,4 @@
-import { SerieCard } from "../components/SerieCard"
+import { Card } from "../components/Card"
 import { useSeries } from "../hooks/useSeries"
 
 export const Series = () => {
@@ -8,7 +8,13 @@ export const Series = () => {
     <div className="px-4 pb-2">
       <div className="flex flex-col md:flex-row flex-wrap gap-2 justify-between">
         {marvel.series.map((serie, id) => (
-          <SerieCard key={id} serie={serie} />
+          <Card
+            key={id}
+            url={`/series/${serie.id}`}
+            imageSrc={`${serie.thumbnail.path}.${serie.thumbnail.extension}`}
+            title={serie.title}
+            description={serie.description}
+          />
         ))}
       </div>
     </div>
